@@ -1,0 +1,44 @@
+{% extends "admin/admin_base.html" %}
+{% block title %}ss_sale{% endblock %}
+{% block user %}
+
+<div style="padding: 0;margin:0" class="col-md-9">
+	<div class="button-group" style="float: right;padding: 0;margin:0;">
+		<a href="#" type="button" class="btn btn-default">Add server</a>
+	</div>
+	<table class="table">
+		<thead>
+		<tr>
+			<td>ID</td>
+			<td>IP_Adress</td>
+			<td>Adress</td>
+			<td>Timeout</td>
+			<td>status</td>
+		</tr>
+	</thead>
+
+    <tbody>
+    {% for server in servers %}
+        <tr>
+        	<td>{{ server.id }}</td>
+        	<td>{{ server.ip_address }}</td>
+        	<td>{{ server.city_address }}</td>
+        	<td>{{ server.timeout }}</td>
+        	<td>{{ status }}</td>
+        	<td>
+    		<div>
+    			<a href="#" type="button" class="btn btn-default">
+    				Edit
+    			</a>
+    			<a href="#" type="button" class="btn btn-default">
+    				Delete
+    			</a>
+    		</div>
+    	</td>
+        </tr>
+    {%endfor%}
+    </tbody>
+
+    </table>
+</div>
+{% endblock %}

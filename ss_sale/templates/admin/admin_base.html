@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}ss_sale{% endblock %}
+
+{% block body %}
+<div class="container-fluid">
+	<div class="row-fluid">
+		<div class="col-md-3">
+			<h4 style="margin-left: 15px; font-size: 30px;">list</h4>
+			<div class="list-group" style="margin:0;padding: 0;">
+				<a href="{{ url_for('admin.server_list') }}" class="list-group-item">servers</a>
+				<a href="{{ url_for('admin.user_list') }}" class="list-group-item">users</a>
+				<a href="#" class="list-group-item">traceroute</a>
+			</div>
+		</div>
+
+	</div>
+
+
+            {% block user %}{% endblock %}       
+
+</div> 
+{% endblock %}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scale=no">
+        <title>{% block title%}Jobplus{% endblock %}</title>
+        <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+    
+    <style>
+ 
+
+
+</style>
+    
+    </head>
+    <body>
+        <nav class="navbar navbar-inverse">
+            <div class="container">
+                <!--Brand and toggle get grouped for better mobile display-->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="/">Jobplus</a>
+                </div>
+
+                <!--Collect the nav links,forms,and other content for toggling-->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="/#">公司<span class="sr-only">(current)</span> </a> </li>
+                        <li><a href="#">职位</a> </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        
+                        
+                       
+                            <li><a href="#}}">公司注册</a></li>
+                            <li><a href="#">求职者注册</a> </li>
+                            <li><a href="#">登录</a></li>
+                        
+                        
+                        
+                            <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            
+                        
+                        
+                    </ul>
+                </div>
+                            
+                        
+    
+                                
+                                </div>
+                        
+                        
+                    
+           
+        </nav>
+       
+            {% block body %}{% endblock %}
+ 
+        <!--Bootstrap 依赖 jQuery-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <!--<script src="static/main.js"></script>-->
+
+        {% block head_css %}
+
+        {% endblock %}
+
+        {% block tail_js %}
+
+        {% endblock %}
+    </body>
+</html>
