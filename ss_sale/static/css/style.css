@@ -1,0 +1,43 @@
+.container-style {
+	margin: 0px;
+	padding: 0px;
+}
+
+.a {
+	margin: 0px;
+	margin-bottom: 10px;
+	padding: 0px;
+	background-color: #C0C0C0;
+	height: 50px;
+	
+}
+
+
+.long-line {
+	background-color: gray;
+	height: 310px;
+}
+
+.long-line-inside {
+	margin-top: 10px;
+	margin-left: 250px;
+	margin-right: 100px;
+	height: 290px;
+}
+
+.serverlist {
+	
+	height: 450px;
+
+}
+
+
+.serverlist-in {
+	background-color: black;
+	margin: 5px;
+	height: 440px;
+}
+
+ul.font-list {
+	font-size: 32px;
+}
