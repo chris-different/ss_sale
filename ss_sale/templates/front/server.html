@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block body %}
+
+<div class="col-md-3 col-sm-4 serverlist">
+		<div class="serverlist-in">
+			<ul>
+				<li class="server">Ip_address:</li>
+				<li class="server">port:</li>
+				<li class="server">username:</li>
+				<li class="server">password</li>
+			</ul>
+		</div>
+	</div>
+{% endblock %}
+
+
+        {% block tail_js %}
+<script src="/static/js/get_server.js" type="text/javascript"></script>
+        {% endblock %}
+
+

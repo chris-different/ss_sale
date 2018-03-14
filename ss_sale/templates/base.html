@@ -1,12 +1,20 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="zh-CN" style="height: 100%;">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scale=no">
         <title>{% block title%}CC-data{% endblock %}</title>
-        
+        {% with messages = get_flashed_messages() %}
+           {% if messages %}
+                <ul class=flashes>
+        {% for message in messages %}
+                <li style="font-size: 30px;">{{ message }}</li>
+        {% endfor %}
+                </ul>
+        {% endif %}
+        {% endwith %}
         <link href="{{ url_for("static", filename="css/style.css") }}" rel="stylesheet" type="text/css" charset="UTF-8" />
-        <link rel="stylesheet" href="static/bootstrap-3.3.7-dist/css/bootstrap.min.css" type="text/css">
+        <link rel="stylesheet" href="/static/bootstrap-3.3.7-dist/css/bootstrap.min.css" type="text/css">
         
 
         {% block head %} {% endblock %}
@@ -17,8 +25,8 @@
 </style>
     
     </head>
-    <body>
-        <nav class="navbar navbar-inverse">
+    <body style="height: 100%;">
+        <nav class="navbar navbar-inverse" style="margin-bottom: 0px;">
             <div class="container container-style">
                 <!--Brand and toggle get grouped for better mobile display-->
                 <div class="navbar-header">
@@ -35,23 +43,46 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li class="active">
-							<a href="/#">可用服务器资源<span class="sr-only">(current)</span> </a> </li>
+							<a href="{{ url_for('server.serverlist') }}">可用服务器资源<span class="sr-only">(current)</span> </a> </li>
                         <li><a href="#">科学上网小知识</a> </li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        
-                        
+                                             
                        
                             <li><a href="#}}">优惠活动</a></li>
-                            <li><a href="#">用户注册</a> </li>
-                            <li><a href="#">登录</a></li>
+                        {% if current_user.is_user %}
+                            <li><a href="#"></a></li>
+                        {% elif current_user.is_admin %}
+                        {% else %}
+                            <li><a href="{{ url_for('front.userregister') }}">用户注册</a> </li>
+                            <li><a href="{{ url_for('front.login') }}">登录</a></li>
+                        {% endif %}
                         
-                        
-                        
+                        {% if current_user.is_user or current_user.is_admin %}
                             <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                             
+                            {{ current_user.username }}
+                            
+                            <span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                {% if current_user.is_user or current_user.is_admin %}
+                                <li><a href="{{ url_for('front.index') }}">personal index</a></li>
+                                {% endif %}
+                                
+                                <li role="separator" class="divider"></li>
+                                <li><a href="{{ url_for('front.logout') }}">log out</a></li>
+                                
+                                
+                            </ul>
                         
+                        </li>
+                        
+                        {% if current_user.is_authenticated and current_user.is_admin %}
+                        <li><a href="{{ url_for('admin.server_list') }}">console</a></li>
+                        {% endif %}
+                        
+                        {% endif %}
                         
                     </ul>
                 </div>
@@ -69,8 +100,8 @@
             {% block body %}{% endblock %}
  
         <!--Bootstrap 依赖 jQuery-->
-        <script src="static/jquery-3.2.1/jquery-3.2.1.min.js" type="text/javascript"></script>
-        <script src="static/bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="/static/jquery-3.2.1/jquery-3.2.1.min.js" type="text/javascript"></script>
+        <script src="/static/bootstrap-3.3.7-dist/js/bootstrap.min.js" type="text/javascript"></script>
         
         <!--<script src="static/main.js"></script>-->
 
