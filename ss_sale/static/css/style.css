@@ -64,19 +64,21 @@ span.rg {
 
 .serverlist {
 	
-	height: 450px;
-	
+	height: 50%;
+	margin-bottom: 10px;
 
 }
 
 
 .serverlist-in {
-	padding: 10px;
-	padding-top: 30px;
+	
+	
 	font-size: 20px;
 	border: solid 1px;
-	margin: 5px;
-	height: 440px;
+	margin: 0px;
+	padding: 0px;
+	height: 100%;
+	
 }
 
 li.server {
@@ -93,4 +95,10 @@ ul.font-list {
 .bottom {
 	background-color: black;
 	height: 60%;
+}
+
+
+.ul-list {
+	margin:0px;
+	padding: 0px;
 }

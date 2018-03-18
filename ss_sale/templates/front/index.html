@@ -18,7 +18,22 @@
 	</div>
 	
 	
+{% if current_user.is_authenticated %}
+<div class="btop">
+	<div class="long-line">
+		<div>
+			<a  style="margin-left: 40%;margin-top: 10%;" class="btn btn-default btn-lg" href="{{ url_for('front.free_server') }}">立刻领用免费vps！！</a>	
+			<a  style="margin-left: 40%;margin-top: 10%;" href="#">
+				<h3 style="color: #FFFFFF;margin-left: 38%;">更多优惠活动，点这里～</h3>
+			</a>
+		</div>
+		
+	</div>	
+		
+</div>
+	
 
+{% else %}
 <div class="btop">
 	<div class="long-line col-md-8">
 		<div id="zeroo" class="long-line-inside">
@@ -37,7 +52,7 @@
 		
 	<div class="long-line col-md-4">
 		<div id="zerorg" style="display: none;">
-			<a class="btn btn-default btn-lg" href="#">注册领用免费vps！！</a>	
+			<a class="btn btn-default btn-lg" href="{{ url_for('front.free_server') }}">注册领用免费vps！！</a>	
 			<a href="#">
 				<h3 style="color: #FFFFFF;">更多优惠活动，点这里～</h3>
 			</a>
@@ -45,6 +60,8 @@
 		
 	</div>
 </div>	
+{% endif %}
+
 	<div class="bottom"></div>
 </div>
 

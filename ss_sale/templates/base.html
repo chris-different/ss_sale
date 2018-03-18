@@ -43,8 +43,12 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
                         <li class="active">
+                            {% if current_user.is_admin %}
 							<a href="{{ url_for('server.serverlist') }}">可用服务器资源<span class="sr-only">(current)</span> </a> </li>
+
+                            {% endif %}
                         <li><a href="#">科学上网小知识</a> </li>
+                        <li><a href="">数字货币数据接口</a></li>
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
                                              
