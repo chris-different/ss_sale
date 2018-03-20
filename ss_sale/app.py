@@ -10,6 +10,7 @@ from ss_sale.models import User,Server
 def create_app(config):
     app = Flask(__name__)
     app.config.from_object(configs.get(config))
+    app.config['JSON_AS_ASCII']=False
     register_extensions(app)
     register_blueprints(app)
     return app

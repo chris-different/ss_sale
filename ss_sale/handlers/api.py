@@ -1,8 +1,9 @@
 from flask import Blueprint, render_template,redirect,url_for, request,current_app,flash,jsonify
 from ss_sale.models import User,Server
+from ss_sale.redis_all import get_data_json
 from flask_login import login_user, logout_user, login_required,current_user
 from ss_sale.forms import LoginForm, UserRegisterForm, UserEditForm
-
+import redis
 api = Blueprint('api',__name__,url_prefix='/api')
 
 
@@ -17,4 +18,10 @@ def server_data():
     for i in list:
         tmp.append(i.to_json())
     return jsonify(tmp)
+
+@api.route('/coin',methods=['GET','POST'])
+def coin_data():
+    coin_data = get_data_json()
+    coin_data.sort(key=lambda x:x['f_id'])
+    return jsonify(coin_data)
 
