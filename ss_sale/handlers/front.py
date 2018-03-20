@@ -41,3 +41,11 @@ def userregister():
         flash('注册成功，请登录！','success')
         return redirect(url_for('.login'))
     return render_template('register.html',form=form)
+
+
+@front.route('/freeserver')
+def free_server():
+    if current_user.is_authenticated:
+        return render_template('front/free_server.html')
+    else:
+        return redirect(url_for('front.userregister'))
