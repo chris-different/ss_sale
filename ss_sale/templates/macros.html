@@ -1,17 +1,17 @@
-<!--需要传入2个参数：要渲染的form和点击提交请求的url-->
+
 {% macro render_form(form,url) %}
 <form method="POST" action="{{ url }}" >
-    <!--将csrf_token 渲染在表单开始的位置-->
+    
     {{ form.csrf_token }}
-    <!--迭代每个表单field-->
+    
     {% for field in form %}
-        <!--如果是csrf_token就不再渲染了-->
+        
         {% if field.type == 'CSRFTokenField' %}
             {{ '' }}
-        <!--SubmitField 单独特殊处理-->
+        
         {% elif field.type== 'SubmitField' %}
             {{ form.submit(class = 'btn btn-primary',type='submit') }}
-        <!--BooleanField 单独特殊处理-->
+        
         {% elif field.type == 'BooleanField' %}
             <div class="checkbox">
                 <label>{{ field() }} {{ field.label.text}}</label>
@@ -34,25 +34,25 @@
 <nav class="nav-pagination" aria-label="Page navigation">
     <ul class="pagination">
 
-        <!--链接到上一页的左箭头(&laquo;),如果没有上一页设为disable 状态     -->
+        
         <li {% if not pagination.has_prev %} class="disabled" {% endif %}>
             <a href="{{ url_for(endpoint,page=pagination.prev_num) if pagination.has_prev else '#'}}">&laquo;</a>
         </li>
 
-        <!--渲染每个页数的按钮-->
+        
         {% for page in pagination.iter_pages() %}
             {% if page %}
                 {% if page != pagination.page %}
                     <li><a href="{{ url_for(endpoint,page=page) }}">{{ page }}</a></li>
                 {% else %}
-                <!--如果页数是当前面,设置为选中状态-->
+                
                 <li class="activate"><a href="#">{{ page }}<span class="sr-only">(current)</span> </a> </li>
                 {% endif %}
             {% else %}
                 <span class="ellipsis">...</span>
             {% endif %}
         {% endfor %}
-        <!--链接到下一页的左箭头(&raquo;),如果没有下一页设为disable 状态     -->
+        
         <li {% if not pagination.has_next %} class="disabled" {% endif %}>
             <a href="{{ url_for(endpoint,page=pagination.next_num) if pagination.has_next else '#' }}">&raquo;</a>
         </li>
@@ -65,25 +65,25 @@
 <nav class="nav-pagination" aria-label="Page navigation">
     <ul class="pagination">
 
-        <!--链接到上一页的左箭头(&laquo;),如果没有上一页设为disable 状态     -->
+        
         <li {% if not pagination.has_prev %} class="disabled" {% endif %}>
             <a href="{{ url_for(endpoint,page=pagination.prev_num,company_id=company_id) if pagination.has_prev else '#'}}">&laquo;</a>
         </li>
 
-        <!--渲染每个页数的按钮-->
+        
         {% for page in pagination.iter_pages() %}
             {% if page %}
                 {% if page != pagination.page %}
                     <li><a href="{{ url_for(endpoint,page=page,company_id=company_id) }}">{{ page }}</a></li>
                 {% else %}
-                <!--如果页数是当前面,设置为选中状态-->
+                
                 <li class="activate"><a href="#">{{ page }}<span class="sr-only">(current)</span> </a> </li>
                 {% endif %}
             {% else %}
                 <span class="ellipsis">...</span>
             {% endif %}
         {% endfor %}
-        <!--链接到下一页的左箭头(&raquo;),如果没有下一页设为disable 状态     -->
+        
         <li {% if not pagination.has_next %} class="disabled" {% endif %}>
             <a href="{{ url_for(endpoint,page=pagination.next_num,company_id=company_id) if pagination.has_next else '#' }}">&raquo;</a>
         </li>
