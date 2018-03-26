@@ -10,3 +10,5 @@ def serverlist():
     else:
         flash('您还没有登录，登录后查看免费ss账号')
         return redirect(url_for('front.login'))
+
+

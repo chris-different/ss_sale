@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block body %}
+<div id="long-list" class="container-fluid" style="background-color: black;color: #FFFFFF;padding-top: 10px;">
+	<table class="table">
+		<thead>
+			<tr>
+				<td>ID</td>
+				<td>NAME</td>
+				<td>flow_market_price</td>
+				<td>flow_amount</td>
+				<td>trade_amount</td>
+				<td>price</td>
+				<td>price_change</td>
+			</tr>
+		</thead>
+
+ 	   <tbody>
+    				
+    </tbody>
+
+    </table>
+
+
+
+</div>
+
+{% endblock %}
+
+
+
+
+
+        {% block tail_js %}
+<script src="/static/js/get_price.js" type="text/javascript"></script>
+        {% endblock %}
+
+

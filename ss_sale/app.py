@@ -28,8 +28,9 @@ def register_extensions(app):
     login_manager.login_view = 'front.login'
 
 def register_blueprints(app):
-    from .handlers import front, admin , server, api
+    from .handlers import front, admin , server, api, coin
     app.register_blueprint(front)
     app.register_blueprint(admin)
     app.register_blueprint(server)
     app.register_blueprint(api)
+    app.register_blueprint(coin)

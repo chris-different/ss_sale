@@ -5,10 +5,10 @@ import redis
 r = redis.StrictRedis(host='127.0.0.1',port=6379,db=0)
 
 keys = r.keys()
-datas = []
 
 
 def get_data_json():
+    datas = []
     for key in keys:
         key_data = {}
         key_data['f_id'] = int(str(r.hget(key,"f_id"),encoding='utf-8'))
