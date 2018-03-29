@@ -102,3 +102,8 @@ ul.font-list {
 	margin:0px;
 	padding: 0px;
 }
+
+.pageList a{
+	border: 1px solid #eaecef;
+}
+

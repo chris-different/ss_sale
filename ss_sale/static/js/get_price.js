@@ -1,7 +1,7 @@
 
 $(document).ready(myWebsocketStart());
 
-var a =1;
+var a = 1;
 
 function myWebsocketStart() {
 	var ws = new WebSocket("ws://127.0.0.1:8080/websocket");
@@ -16,7 +16,7 @@ function myWebsocketStart() {
 			var json = JSON.parse(evt.data);
 			if (a == 1){
 				$.each(json,function(i,n){
-					$("tbody").append("<tr id=\""+i+"\"><\/tr>");
+					$("tbody").append("<tr style=\"font-size:18px;\" id=\""+i+"\"><\/tr>");
 					var h = "#"+i;
 					$(h).append("<td class=\"f_id"+i+"\" id=\""+i+"\">"+n.f_id+"<\/td>");
 					$(h).append("<td class=\"name"+i+"\" id=\""+i+"\">"+n.name+"<\/td>");	
@@ -89,7 +89,7 @@ function get_json(){
 		$.each(data,function(i,n){
 
 
-			$("tbody").append("<tr id=\""+i+"\"><\/tr>");
+			$("tbody").append("<tr style=\"font-size:20px;\" id=\""+i+"\"><\/tr>");
 			var h = "#"+i;
 			$(h).append("<td id=\""+i+"\">"+n.f_id+"<\/td>");
 			$(h).append("<td id=\""+i+"\">"+n.name+"<\/td>");	
