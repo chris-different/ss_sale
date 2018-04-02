@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+
+{% block head %}
+
+<link href="http://apps.bdimg.com/libs/highlight.js/9.1.0/styles/default.min.css" rel="stylesheet">
+<script src="http://apps.bdimg.com/libs/highlight.js/9.1.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+{% endblock %}
+
+
+
+
+{% block body %}
+<div class="container">
+	<div class="col-md-4" style="height:1000px;background-color: #f5f7f9;">
+		<ul style="list-style-type: none;">
+			<li style="margin-bottom: 30px;">
+				<h3>
+					获得历史数据,示例代码。					
+				</h3>
+			</li>
+			<li style="margin-bottom: 20px;">
+				<a href="#">使用golang,获取全部历史日数据</a>
+			</li>
+			<li style="margin-bottom: 20px;">
+				<a href="#">使用golang,获取单日数据</a>
+			</li>
+			<li style="margin-bottom: 20px;">
+				<a href="#">使用golang,获取时间段数据</a>	
+			</li>
+			<li style="margin-bottom: 20px;">
+				<a href="#">使用python,获取全部历史日数据</a>
+			</li>
+			<li style="margin-bottom: 20px;">
+				<a href="#">使用python,获取单日数据</a>
+			</li>
+			<li style="margin-bottom: 20px;">
+				<a href="#">使用python,获取时间段数据</a>	
+			</li>
+		</ul>	
+	</div>
+	<div class="col-md-8">
+		<p><h2>
+				所有使用time均为unix时间，请自行转换。				
+			</h2></p>
+		<pre>
+			
+			<p>golang-获取全部历史日数据,示例代码</p>
+			
+			<code class="golang">
+package main
+import "fmt"
+import "net/http"
+func main(){
+	resp,_ := http.Get("http://www.ccdata.tk/history_data")
+	defer resp.Body.Close()
+	body,_ := ioutil.ReadAll(resp.Body)
+	fmt.Println(string(body))
+}
+			</code>
+
+			<p>golang-获取指定单日数据,示例代码</p>
+			
+			<code class="golang">
+package main
+import "fmt"
+import "net/http"
+func main(){
+	resp,_ := http.Get("http://www.ccdata.tk/history_data/{your_time}")
+	defer resp.Body.Close()
+	body,_ := ioutil.ReadAll(resp.Body)
+	fmt.Println(string(body))
+}
+			</code>
+
+
+			<p>golang-获取指定时间段日数据,示例代码</p>
+			
+			<code class="golang">
+package main
+import "fmt"
+import "net/http"
+func main(){
+	resp,_ := http.Get("http://www.ccdata.tk/history_data/{start_time}/{end_time}")
+	defer resp.Body.Close()
+	body,_ := ioutil.ReadAll(resp.Body)
+	fmt.Println(string(body))
+}
+			</code>
+
+			
+
+
+			<p>python-获取全部日数据,示例代码</p>
+			<p>建议使用第三方包request,比较简易.</p>
+		<code class="python">
+import requests
+import json
+def get_json():
+	r = requests.get('http://www.ccdata.tk/history_data')
+	my_json = json.loads(r.text)
+	print(my_json)
+
+if __name__ == '__main__':
+	get_json()
+		</code>
+
+
+		<p>python-获取单日数据,示例代码</p>
+		<code class="python">
+import requests
+import json
+def get_json():
+	r = requests.get('http://www.ccdata.tk/history_data/{time}')
+	my_json = json.loads(r.text)
+	print(my_json)
+
+if __name__ == '__main__':
+	get_json()
+		</code>
+
+
+<p>python-使用python获取指定时间段示例代码</p>
+		<code class="python">
+import requests
+import json
+def get_json():
+	r = requests.get('http://www.ccdata.tk/history_data/{start_time}/{end_time}')
+	my_json = json.loads(r.text)
+	print(my_json)
+
+if __name__ == '__main__':
+	get_json()
+		</code>
+		
+		</pre>
+	</div>
+		
+</div>
+
+{% endblock %}

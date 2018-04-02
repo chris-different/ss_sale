@@ -1,0 +1,119 @@
+{% extends "base.html" %}
+
+{% block head %}
+
+<link href="http://apps.bdimg.com/libs/highlight.js/9.1.0/styles/default.min.css" rel="stylesheet">
+<script src="http://apps.bdimg.com/libs/highlight.js/9.1.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+{% endblock %}
+
+
+
+
+{% block body %}
+<div class="container">
+	<div class="col-md-4" style="height:1000px;background-color: #f5f7f9;">
+		
+			<ul style="list-style-type: none;">
+			<li style="margin-bottom: 30px;">
+				<h3>
+					获得即使行情,示例代码。					
+				</h3>
+			</li>
+			<li style="margin-bottom: 20px;">
+				<a href="#">使用golang建立websocket连接</a>
+			</li>
+			<li style="margin-bottom: 20px;">
+				<a href="#">使用golang-http方法</a>
+			</li>
+			<li style="margin-bottom: 20px;">
+				<a href="#">
+			使用python建立websocket连接
+				</a>	
+			</li>
+			<li style="margin-bottom: 20px;">
+				<a href="">使用python-http方法
+				</a>
+			</li>
+		</ul>	
+		
+		
+	</div>
+	<div class="col-md-8">
+		<p><h2>
+			所有使用时间均为unix时间,请自行转换				
+			</h2></p>
+		
+		<pre>
+			<p>golang-使用websocket连接api，示例代码</p>
+			
+		<code class="golang">
+package main
+import "fmt"
+import "time"
+import "github.com/gorilla/websocket"
+func main(){
+	client,_,_ := websocket.DefaultDialer.Dial("ws://127.0.0.1:8080/current_data/websocket",nil)
+	defer client.Close()
+	for {
+		client.WriteMessage(websocket.TextMessage,[]byte("ping"))
+		_, message,_ := client.ReadMessage()
+		t := time.NewTimer(1*time.Second)
+		<- t.C
+	}
+}
+		</code>
+
+
+
+<p>golang-使用http连接api，示例代码</p>
+			
+		<code class="golang">
+package main
+import "fmt"
+import "net/http"
+func main(){
+	resp,_ := http.Get("http://www.ccdata.tk/current_data")
+	defer resp.Body.Close()
+	body,_ := ioutil.ReadAll(resp.Body)
+	fmt.Println(string(body))
+}
+		</code>
+
+
+
+
+<p>python-使用websocket连接api，示例代码</p>
+<p>需要安装三方包websocket,如果提示没有create_connection则pip安装websocket-client包,即可</p>			
+		<code class="python">
+import websocket
+ws = websocket.create_connection("ws://127.0.0.1:8080/current_data/websocket")
+ws.send("ping")
+print("received '%s'" % result)
+		</code>
+
+
+
+
+
+
+<p>python-使用http连接api，示例代码</p>
+			
+		<code class="python">
+import requests
+import json
+def get_json():
+	r = requests.get('http://www.ccdata.tk/current_data')
+	my_json = json.loads(r.text)
+	print(my_json)
+
+if __name__ == '__main__':
+	get_json()
+		</code>
+		</pre>
+	</div>
+		
+</div>
+
+{% endblock %}

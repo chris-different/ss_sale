@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+
+{% block body %}
+
+<div style="border-style: none;background-color: #f5f7f9;padding-bottom: 0px;">
+	<h1 style="text-align: center;padding-top: 50px;padding-bottom: 50px;font-size: 36px;margin:0px;">
+		量化交易者的API
+		<br>
+		<p style="font-weight: 300;font-size: 18px;margin-top:  10px;font-size: 18px;font-weight: 300;">免费使用ccdata的API来帮助您开始构建您的量化系统</p>
+	</h1>
+	
+
+</div>
+
+
+<div style="background: #e3eff5;text-align: center;padding-top: 25px;padding-bottom: 25px;">
+	<span style="color: #004a7c;font-size: 16px;">
+		<strong>
+			要求：要绕过请求限制，请申请一个api密匙。
+		</strong>
+		<a href="#" style="font-size: 14px;font-weight: 600;">
+			请求密匙
+		</a>
+	</span>
+</div>
+
+<div class="container" style="border-bottom: 1px solid #efefef;padding-left: 15px;padding-right: 15px;">
+	<div style="font-size: 16px;font-weight: 500;padding-top: 20px;padding-bottom: 20px;" class="col-md-6">
+		<h3 style="font-size: 28px;padding-bottom: 20px;">获取行情数据</h3>
+		<p style="color: #4c4c4c;font-size: 18px;">24小时获取</p>
+		<span style="padding-bottom: 20px;display: block;">快速RESTFUL_API</span>
+		<a href="{{ url_for('code.current_data') }}" style="font-size: 14px;font-weight: 600;">浏览文档</a>
+	</div>
+
+	<div class="col-md-6" style="background-color: #F5F7F9;padding-top: 0px;font-size: 15px;margin-top: 20px;">
+		<ul style="padding-left: 10px;font-size: 18px;">
+			<h3>
+				目前支持的语言
+			</h3>
+			<li style="border-top: 1px solid #ddd">
+				<span>python</span>
+
+			</li>
+			<li style="border-top: 1px solid #ddd">
+				<span>golang</span>
+				
+			</li>
+		</ul>
+	</div>
+</div>
+
+
+<div class="container" style="border-bottom: 1px solid #efefef;padding-left: 15px;padding-right: 15px;">
+	<div style="font-size: 16px;font-weight: 500;padding-top: 20px;padding-bottom: 20px;" class="col-md-6">
+		<h3 style="font-size: 28px;padding-bottom: 20px;">获取回测数据</h3>
+		<p style="color: #4c4c4c;font-size: 18px;">24小时获取</p>
+		<span style="padding-bottom: 20px;display: block;">快速RESTFUL_API</span>
+		<a href="{{ url_for('code.history_data') }}" style="font-size: 14px;font-weight: 600;">浏览文档</a>
+	</div>
+</div>
+
+
+
+{% endblock %}

@@ -10,7 +10,7 @@ front = Blueprint('front',__name__)
 
 @front.route('/')
 def index():
-    return render_template('front/index.html')
+    return render_template('front/new_index.html')
 
 
 @front.route('/login',methods=['GET','POST'])
@@ -59,3 +59,8 @@ def get_platform():
     post = tdb.test
     datas = post.find()
     return render_template('front/platform.html',datas=datas)
+
+
+@front.route('/api_server')
+def get_api():
+    return render_template('front/api_server.html')

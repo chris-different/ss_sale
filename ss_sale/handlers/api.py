@@ -6,6 +6,7 @@ from ss_sale.forms import LoginForm, UserRegisterForm, UserEditForm
 import redis
 import requests
 import json
+from ss_sale.btc_price import get_btc_price
 api = Blueprint('api',__name__,url_prefix='/api')
 
 
@@ -20,14 +21,30 @@ def server_data():
     for i in list:
         tmp.append(i.to_json())
     return jsonify(tmp)
-
+#外部api接口
 @api.route('/coin',methods=['GET','POST'])
 def coin_data():
     coin_data = get_data_json()
     coin_data.sort(key=lambda x:x['f_id'])
     return jsonify(coin_data[0:50])
+
+@api.route('/bitcoin',methods=['GET','POST'])
+def bitcoin_data():
+    data = get_btc_price()
+    return json.dumps(data)
+
+
+
+
+
+#go调用,内部api接口
 @api.route('/go_coin',methods=['GET','POST'])
 def get_coin():
-    r = requests.get('http://127.0.0.1:8081')
+    r = requests.get('http://127.0.0.1:8080/current_data')
     t = json.loads(r.text)
     return jsonify(t)
+
+
+
+
+

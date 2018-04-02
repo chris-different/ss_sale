@@ -3,17 +3,11 @@
 
 {% block body %}
 <div class="container">
-	<div class="pageList">
-		<a href="#" class="btn btn-white">1</a>
-		<a href="#" class="btn btn-white">2</a>
-		<a href="#" class="btn btn-white">3</a>
-		<a href="#" class="btn btn-white">...</a>
-		<a href="#" class="btn btn-white">7</a>
-	</div>
+	
 	<ul style="list-style-type: none;margin-top: 2%;">
 
 		{% for data in datas %}
-			<li style="background-color: #f9f9f9;font-size: 18px;border-bottom: 1px dashed #ddd;">
+			<li style="background-color: #f9f9f9;font-size: 18px;border-bottom: 1px dashed #ddd;margin-bottom: 10px;">
 				<div style="display: block;">
 					<p style="font-size: 25px;font-weight: bold;color: #3499da;">{{ data.name }}</p>			
 				</div>
@@ -26,9 +20,7 @@
 							country:{{ data.country }}
 						</span>
 						
-						<span style="margin-left: 150px;">
-							 amount:{{ data.amount }}
-						</span>
+						
 					</p>
 				</div>
 			</li>

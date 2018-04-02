@@ -4,7 +4,7 @@ $(document).ready(myWebsocketStart());
 var a = 1;
 
 function myWebsocketStart() {
-	var ws = new WebSocket("ws://127.0.0.1:8080/websocket");
+	var ws = new WebSocket("ws://127.0.0.1:8080/allcoin_current/websocket");
 
 	ws.onopen = function() {
 		ws.send("ping")
@@ -21,11 +21,11 @@ function myWebsocketStart() {
 					$(h).append("<td class=\"f_id"+i+"\" id=\""+i+"\">"+n.f_id+"<\/td>");
 					$(h).append("<td class=\"name"+i+"\" id=\""+i+"\">"+n.name+"<\/td>");	
 					$(h).append("<td class=\"flow_market_price"+i+"\" id=\""+i+"\">"+n.flow_market_price+"<\/td>");	
-					$(h).append("<td class=\"flow_amount"+i+"\" id=\""+i+"\">"+n.flow_amount+"<\/td>");	
-					$(h).append("<td class=\"trade_amount"+i+"\" id=\""+i+"\">"+n.trade_amount+"<\/td>");
+					$(h).append("<td class=\"flow_amount"+i+"\" id=\""+i+"\">"+n.Flow_amount+"<\/td>");	
+					$(h).append("<td class=\"trade_amount"+i+"\" id=\""+i+"\">"+n.Trade_amount+"<\/td>");
 					$(h).append("<td class=\"price"+i+"\" id=\""+i+"\">"+n.price+"<\/td>");
-					$(h).append("<td class=\"price_change"+i+"\" id=\""+i+"\">"+n.price_change+"<\/td>");
-					var intprice_change = parseInt(n.price_change) ;
+					$(h).append("<td class=\"price_change"+i+"\" id=\""+i+"\">"+n.Price_change+"<\/td>");
+					var intprice_change = parseInt(n.Price_change) ;
 					if (intprice_change > 0){
 						$(" .f_id"+i).css({"color":"red"});
 						$(" .name"+i).css({"color":"red"});
@@ -48,7 +48,7 @@ function myWebsocketStart() {
 			if (a != 1){
 				$.each(json,function(i,n){
 					var h = "#"+i;
-					var intprice_change = parseInt(n.price_change) ;
+					var intprice_change = parseInt(n.Price_change) ;
 					if (intprice_change > 0){
 						$(" .f_id"+i).css({"color":"red"});
 						$(" .name"+i).css({"color":"red"});
@@ -67,7 +67,7 @@ function myWebsocketStart() {
 						$(" .price_change"+i).css({"color":"green"});
 					}
 					$(" .price"+i).text(n.price);
-					$(" .price_change"+i).text(n.price_change);
+					$(" .price_change"+i).text(n.Price_change);
 				});
 			}
 
@@ -94,10 +94,10 @@ function get_json(){
 			$(h).append("<td id=\""+i+"\">"+n.f_id+"<\/td>");
 			$(h).append("<td id=\""+i+"\">"+n.name+"<\/td>");	
 			$(h).append("<td id=\""+i+"\">"+n.flow_market_price+"<\/td>");	
-			$(h).append("<td id=\""+i+"\">"+n.flow_amount+"<\/td>");	
-			$(h).append("<td id=\""+i+"\">"+n.trade_amount+"<\/td>");
+			$(h).append("<td id=\""+i+"\">"+n.Flow_amount+"<\/td>");	
+			$(h).append("<td id=\""+i+"\">"+n.Trade_amount+"<\/td>");
 			$(h).append("<td id=\""+i+"\">"+n.price+"<\/td>");
-			$(h).append("<td id=\""+i+"\">"+n.price_change+"<\/td>");			
+			$(h).append("<td id=\""+i+"\">"+n.Price_change+"<\/td>");			
 				
 				
 		});
