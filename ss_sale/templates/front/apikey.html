@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block body %}
+<div style="margin-top: 250px;" class="container">
+	{% if current_user.is_authenticated %}
+	<h3>请保管好您的apikey :{{ apikey }}</h3>
+	{% else  %}
+	<h3 style="margin-left: 300px;">请先登录再领取apikey</h3>
+	{% endif %}
+	
+	
+</div>
+
+{% endblock %}

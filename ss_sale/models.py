@@ -2,7 +2,7 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from flask_login import UserMixin,current_user
 from werkzeug.security import generate_password_hash, check_password_hash
-
+import hashlib
 
 db = SQLAlchemy()
 
@@ -27,12 +27,14 @@ class User(Base, UserMixin):
     ROLE_ADMIN =30
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(32), unique=True, index=True, nullable=False)
-    email = db.Column(db.String(64), unique=True, index=True, nullable=False)
+    email = db.Column(db.String(128), unique=True,  nullable=False)
     _password = db.Column('password', db.String(256), nullable=False)
     role = db.Column(db.SmallInteger, default=ROLE_USER)
+    _apikey = db.Column(db.String(256), unique=False,nullable=False)
     
-    def __init__(self):
-        super(Base,self).__init__()
+#    def __init__(self):
+#        super(Base,self).__init__()
+
     @property
     def is_admin(self):
         return self.role == self.ROLE_ADMIN
@@ -48,11 +50,16 @@ class User(Base, UserMixin):
     @property
     def password(self):
         return self._password
-
-
     @password.setter
     def password(self, orig_password):
         self._password = generate_password_hash(orig_password)
+    @property
+    def apikey(self):
+        return self._apikey
+    @apikey.setter
+    def apikey(self, orig_apikey):
+        self._apikey = hashlib.sha256(orig_apikey.encode('utf8')).hexdigest()
+
 
     def check_password(self, password):
         return check_password_hash(self._password, password)

@@ -19,6 +19,7 @@ class UserRegisterForm(FlaskForm):
         user.email = self.email.data
         user.password = self.password.data
         user.role = 10
+        user.apikey = self.password.data
         db.session.add(user)
         db.session.commit()
         return user

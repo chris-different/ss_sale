@@ -12,7 +12,8 @@ def iter_user():
         yield User(
             username = fake.word()+str(randint(400,500)),
             email = fake.word()+str(randint(1,1000))+'@'+'gmail.com',
-            password = '123456'
+            password = '123456',
+            apikey = '123456'
             )
 
 

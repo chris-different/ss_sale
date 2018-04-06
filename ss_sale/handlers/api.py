@@ -14,6 +14,16 @@ api = Blueprint('api',__name__,url_prefix='/api')
 def all():
     return redirect(url_for('front.index'))
 
+@api.route('/apikey')
+def apikey():
+    if current_user.is_authenticated:
+        myid = current_user.get_id()
+        user = User.query.filter_by(id=myid).first()
+        return render_template('front/apikey.html',apikey=user.apikey)
+    else:
+        return render_template('front/apikey.html')
+
+
 @api.route('/server',methods=['GET','POST'])
 def server_data():
     list = Server.query.all()
